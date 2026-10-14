@@ -1,0 +1,99 @@
+# Django CI Pipeline with Jenkins
+
+## Project Overview
+
+This project demonstrates the implementation of a Continuous Integration (CI) pipeline for a Django application using Jenkins, GitHub, and AWS EC2.
+
+The goal is to automate source code checkout, dependency installation, application validation, and testing through a Jenkins Declarative Pipeline.
+
+## Architecture
+
+```text
+Developer
+   |
+   v
+GitHub Repository
+   |
+   v
+Jenkins Pipeline
+   |
+   v
+AWS EC2 Instance
+   |
+   +--> Checkout Source Code
+   |
+   +--> Check Python Environment
+   |
+   +--> Install Dependencies
+   |
+   +--> Django Configuration Check
+   |
+   +--> Run Automated Tests
+   |
+   v
+Build Result
+```
+
+## Technologies Used
+
+- **Jenkins** — CI pipeline orchestration
+- **Git and GitHub** — Source code management
+- **AWS EC2** — Jenkins execution environment
+- **Python** — Application programming language
+- **Django** — Web application framework
+- **Groovy** — Jenkins Declarative Pipeline syntax
+
+## Pipeline Stages
+
+### 1. Checkout
+
+Retrieves the application source code from the GitHub repository.
+
+### 2. Check Python Environment
+
+Verifies the Python and pip versions available to Jenkins.
+
+### 3. Install Dependencies
+
+Installs Django and Gunicorn for the application environment.
+
+### 4. Django Configuration Check
+
+Runs the Django system check command:
+
+```bash
+python manage.py check
+```
+
+### 5. Automated Testing
+
+Executes Django's test suite:
+
+```bash
+python manage.py test
+```
+
+## Key Learnings
+
+- Writing a Declarative Jenkins Pipeline.
+- Integrating Jenkins with a GitHub repository.
+- Understanding Jenkins workspaces and build execution.
+- Troubleshooting missing Git executables on the Jenkins server.
+- Automating Django validation and test execution.
+
+## Current Status
+
+**In Progress** — Building and validating the CI pipeline. Pipeline success will be confirmed after all configured stages complete successfully.
+
+## Future Improvements
+
+- Store dependencies in `requirements.txt`.
+- Add linting and automated test reporting.
+- Build a Docker image for the Django application.
+- Publish the image to Amazon Elastic Container Registry (Amazon ECR).
+- Implement automated deployment and post-deployment health checks.
+
+
+## Author
+
+Learning DevOps through hands-on projects, automation, and troubleshooting.
